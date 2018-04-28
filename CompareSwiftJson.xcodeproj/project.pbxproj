@@ -25,6 +25,8 @@
 		72FFFC6120941D78007B7C42 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FFFC6020941D78007B7C42 /* Curry.framework */; };
 		72FFFC632094495D007B7C42 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FFFC622094495D007B7C42 /* Argo.framework */; };
 		72FFFC6520944962007B7C42 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FFFC6420944962007B7C42 /* Runes.framework */; };
+		72FFFC6A20946A92007B7C42 /* PersonGloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FFFC6920946A92007B7C42 /* PersonGloss.swift */; };
+		72FFFC6C20946B03007B7C42 /* GenderGloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FFFC6B20946B03007B7C42 /* GenderGloss.swift */; };
 		83E22A5A5E63C03CE4E575BF /* Pods_CompareSwiftJsonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F170EE169893E4707F4E8D /* Pods_CompareSwiftJsonTests.framework */; };
 		9AEBF6C01957D08ACEF62965 /* Pods_CompareSwiftJsonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8498649E498C76DE13A63643 /* Pods_CompareSwiftJsonUITests.framework */; };
 		E3D483CF431E254B60079D49 /* Pods_CompareSwiftJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A601FE14FAA3579E70E991 /* Pods_CompareSwiftJson.framework */; };
@@ -76,6 +78,8 @@
 		72FFFC6020941D78007B7C42 /* Curry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Curry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FFFC622094495D007B7C42 /* Argo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Argo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FFFC6420944962007B7C42 /* Runes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Runes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72FFFC6920946A92007B7C42 /* PersonGloss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGloss.swift; sourceTree = "<group>"; };
+		72FFFC6B20946B03007B7C42 /* GenderGloss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderGloss.swift; sourceTree = "<group>"; };
 		8498649E498C76DE13A63643 /* Pods_CompareSwiftJsonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompareSwiftJsonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0953EA3B984457D8E4CC31B /* Pods-CompareSwiftJsonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompareSwiftJsonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompareSwiftJsonUITests/Pods-CompareSwiftJsonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7EE4C9B9BD3FB5594F0C1BB /* Pods-CompareSwiftJson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompareSwiftJson.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompareSwiftJson/Pods-CompareSwiftJson.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		72CAAE252092268A0079E641 /* CompareSwiftJson */ = {
 			isa = PBXGroup;
 			children = (
+				72FFFC6820946A69007B7C42 /* Gloss */,
 				72458B3B20937B7E00EBAD0A /* Argo */,
 				72458B36209376DF00EBAD0A /* SwiftyJSON */,
 				72458B3120936CAE00EBAD0A /* ObjectMapper */,
@@ -218,6 +223,15 @@
 				72CAAE482092268D0079E641 /* Info.plist */,
 			);
 			path = CompareSwiftJsonUITests;
+			sourceTree = "<group>";
+		};
+		72FFFC6820946A69007B7C42 /* Gloss */ = {
+			isa = PBXGroup;
+			children = (
+				72FFFC6920946A92007B7C42 /* PersonGloss.swift */,
+				72FFFC6B20946B03007B7C42 /* GenderGloss.swift */,
+			);
+			path = Gloss;
 			sourceTree = "<group>";
 		};
 		CCA28DAE0B088636416FE8DE /* Frameworks */ = {
@@ -457,12 +471,14 @@
 			files = (
 				72458B2E20936AC700EBAD0A /* PersonHandyJSON.swift in Sources */,
 				72CAAE292092268A0079E641 /* ViewController.swift in Sources */,
+				72FFFC6A20946A92007B7C42 /* PersonGloss.swift in Sources */,
 				72458B382093773300EBAD0A /* PersonSwiftyJSON.swift in Sources */,
 				72458B3F20937CEA00EBAD0A /* GenderArgo.swift in Sources */,
 				72458B35209372BA00EBAD0A /* GenderObjectMapper.swift in Sources */,
 				72458B3D20937B9800EBAD0A /* PersonArgo.swift in Sources */,
 				72458B33209370F000EBAD0A /* PersonObjectMapper.swift in Sources */,
 				72CAAE272092268A0079E641 /* AppDelegate.swift in Sources */,
+				72FFFC6C20946B03007B7C42 /* GenderGloss.swift in Sources */,
 				72458B3A2093782400EBAD0A /* GenderSwiftyJSON.swift in Sources */,
 				72458B3020936B0900EBAD0A /* GenderHandyJSON.swift in Sources */,
 			);

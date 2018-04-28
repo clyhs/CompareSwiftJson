@@ -11,6 +11,7 @@ import HandyJSON
 import ObjectMapper
 import SwiftyJSON
 import Argo
+import Gloss
 
 class ViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
         self.deserializationObjectMapper()
         self.deserializationSwiftyJSON()
         self.deserializationArgo()
+        self.deserializationGloss()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +40,19 @@ class ViewController: UIViewController {
         case ObjectMapper
     }
     
+    func deserializationGloss(){
+        
+        let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
+        let data:Data = jsonString.data(using: String.Encoding.utf8)!
+        let person:PersonGloss? = PersonGloss(data: data)
+        
+        print("Gloss json start")
+        
+        print(person ?? "")
+        print(person?.gender ?? "");
+        print(person?.name ?? "");
+        print(person?.id ?? 0);
+    }
     func deserializationArgo(){
         
         let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
