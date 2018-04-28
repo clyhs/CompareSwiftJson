@@ -20,11 +20,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.deserializationHandyJSON()
-        self.deserializationObjectMapper()
-        self.deserializationSwiftyJSON()
-        self.deserializationArgo()
-        self.deserializationGloss()
+        self.parser(.HandyJson)
+        self.parser(.Argo)
+        self.parser(.Gloss)
+        self.parser(.SwiftyJson)
+        self.parser(.ObjectMapper)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    enum jsonType {
+    enum JsonType {
         case HandyJson
         case Argo
         case Gloss
@@ -40,40 +40,49 @@ class ViewController: UIViewController {
         case ObjectMapper
     }
     
-    func deserializationGloss(){
-        
+    func parser(_ jsonType : JsonType) {
         let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
-        let data:Data = jsonString.data(using: String.Encoding.utf8)!
+        switch jsonType {
+        case .HandyJson:
+            self.parserHandyJSON(jsonString)
+        case .Argo:
+            self.parserArgo(jsonString)
+        case .Gloss:
+            self.parserGloss(jsonString)
+        case .SwiftyJson:
+            self.parserSwiftyJSON(jsonString)
+        case .ObjectMapper:
+            self.parserObjectMapper(jsonString)
+        }
+    }
+    
+    func parserGloss(_ string : String){
+        
+        let data:Data = string.data(using: String.Encoding.utf8)!
         let person:PersonGloss? = PersonGloss(data: data)
-        
-        print("Gloss json start")
-        
+        print("******************Gloss json parser start******************")
         print(person ?? "")
         print(person?.gender ?? "");
         print(person?.name ?? "");
         print(person?.id ?? 0);
-    }
-    func deserializationArgo(){
+        print("******************Gloss json parser end******************")
         
-        let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
-        //let json:Any = Argo.JSON.string(jsonString)
-        //let a:AnyObject? = Argo.JSON(json) as AnyObject
-        let data:Data = jsonString.data(using: String.Encoding.utf8)!
+    }
+    func parserArgo(_ string : String){
+        
+        let data:Data = string.data(using: String.Encoding.utf8)!
         let j:AnyObject = try! Argo.JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.init(rawValue: 0)) as AnyObject
-        //if let j: AnyObject = a {
-        print("Argo json start")
+        print("******************Argo json start******************")
         let person: PersonArgo? = decode(j)
         print(person ?? "")
         print(person?.gender ?? "");
         print(person?.name ?? "");
         print(person?.id ?? 0);
-        //}
-        
-        
+        print("******************Argo json end******************")
     }
-    func deserializationSwiftyJSON(){
-        let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
-        let json = JSON(parseJSON: jsonString)
+    func parserSwiftyJSON(_ string : String){
+
+        let json = JSON(parseJSON: string)
         if let j = json.dictionary {
             let id = j["person_id"]!.int!
             let name = j["username"]!.string!
@@ -82,44 +91,38 @@ class ViewController: UIViewController {
             let gender = j["gender"]!.string!
             let g = GenderSwiftyJSON(rawValue: gender)
             let person = PersonSwiftyJSON(id:id,name:name,age:age,height:height,gender:g)
-            
-            print("SwiftyJSON json start")
+            print("******************SwiftyJSON json start******************")
             print(person)
             print(person.gender!);
             print(person.name!);
             print(person.id!);
+            print("******************SwiftyJSON json end******************")
         }
         
     }
     
     
-    func deserializationObjectMapper(){
+    func parserObjectMapper(_ string : String){
         
-        let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
-        
-        if let person = Mapper<PersonObjectMapper>().map(JSONString: jsonString){
-            print("OjectMapper json start")
+        if let person = Mapper<PersonObjectMapper>().map(JSONString: string){
+            print("******************OjectMapper json start******************")
             print(person.toJSON())
             print(person.gender!);
             print(person.name!);
             print(person.id!);
+            print("******************OjectMapper json end******************")
         }
-        
-        
     }
     
-    func deserializationHandyJSON(){
-        
-        let jsonString = "{\"person_id\":77544,\"username\":\"Tom Li\",\"age\":18,\"height\":180,\"gender\":\"Female\"}"
-
-        if let person = PersonHandyJSON.deserialize(from: jsonString) {
-            print("HandyJSON json start")
+    func parserHandyJSON(_ string : String){
+        if let person = PersonHandyJSON.deserialize(from: string) {
+            print("******************HandyJSON json start******************")
             print(person.toJSON()!)
             print(person.gender!);
             print(person.name!);
             print(person.id!);
+            print("******************HandyJSON json end******************")
         }
-        
     }
 
 }
